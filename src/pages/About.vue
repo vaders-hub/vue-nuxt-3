@@ -1,5 +1,4 @@
 <script lang="ts">
-import { defineComponent, onMounted, ref } from "#imports";
 export default defineComponent({
   name: "About",
   setup() {

@@ -1,4 +1,6 @@
 {
+  // https://nuxt.com/docs/guide/concepts/typescript
+  "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
@@ -20,14 +22,12 @@
       "~/*": ["./*"],
       "@/*": ["./src/*"]
     },
-    "types": ["webpack-env", "@types/jest"],
-    "typeRoots": ["./src/types", "./node_modules/@types"],
     "jsx": "preserve",
     "noImplicitAny": false,
     "isolatedModules": true
   },
 
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "tests/**/*.ts", "tests/**/*.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
   "exclude": ["node_modules", "dist"],
   "compileOnSave": false
 }
