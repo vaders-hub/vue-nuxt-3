@@ -1,3 +1,5 @@
 <template>
-  <div>alert component</div>
+  <span>
+    <slot />
+  </span>
 </template>

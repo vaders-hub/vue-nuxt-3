@@ -9,5 +9,5 @@ export default defineComponent({
 <template>
   <h1>Index page</h1>
   <div>about page</div>
-  <AppAlert />
+  <AppAlert> This is an auto-imported component. </AppAlert>
 </template>
