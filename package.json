@@ -13,6 +13,8 @@
     "nuxt": "^3.1.2"
   },
   "dependencies": {
-    "@volar/vue-typescript": "^1.0.24"
+    "@pinia/nuxt": "^0.4.6",
+    "@volar/vue-typescript": "^1.0.24",
+    "@vueuse/core": "^9.12.0"
   }
 }
