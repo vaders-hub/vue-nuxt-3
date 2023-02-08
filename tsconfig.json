@@ -22,7 +22,7 @@
       "~/*": ["./*"],
       "@/*": ["./src/*"]
     },
-    "types": ["node"],
+    "types": ["node", "@nuxt/types"],
     "jsx": "preserve",
     "noImplicitAny": false,
     "isolatedModules": true

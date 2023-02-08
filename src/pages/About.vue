@@ -6,6 +6,15 @@ export default defineComponent({
     const filtersStore = useFiltersStore();
     const filtersD = filtersStore.filtersList;
 
+    onMounted(async () => {
+      const param = ref("todos/1");
+
+      const { isFetching, error, data } = await useCustomFetch(param.value, {
+        method: "get",
+      });
+      console.log("data", isFetching, error, data.value);
+    });
+
     return { filtersD };
   },
 });
