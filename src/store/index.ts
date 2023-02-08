@@ -1,10 +1,10 @@
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia';
 
 export const useFiltersStore = defineStore({
-  id: "filter-store",
+  id: 'filter-store',
   state: () => {
     return {
-      filtersList: "1234",
+      filtersList: '1234',
     };
   },
   actions: {},

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { useFiltersStore } from "@/store";
+import { useFiltersStore } from '@/store';
 
 export default defineComponent({
   setup() {
@@ -7,12 +7,12 @@ export default defineComponent({
     const filtersD = filtersStore.filtersList;
 
     onMounted(async () => {
-      const param = ref("todos/1");
+      const param = ref('todos/1');
 
       const { isFetching, error, data } = await useCustomFetch(param.value, {
-        method: "get",
+        method: 'get',
       });
-      console.log("data", isFetching, error, data.value);
+      console.log('data', data.value);
     });
 
     return { filtersD };

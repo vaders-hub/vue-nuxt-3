@@ -1,10 +1,12 @@
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
+  ssr: true,
+  build: {},
   modules: [
     [
-      "@pinia/nuxt",
+      '@pinia/nuxt',
       {
-        autoImports: ["defineStore", ["defineStore", "definePiniaStore"]],
+        autoImports: ['defineStore', ['defineStore', 'definePiniaStore']],
       },
     ],
   ],
@@ -13,8 +15,10 @@ export default defineNuxtConfig({
       // baseURL: process.env.BASE_URL || "https://localhost:3001/",
     },
   },
-  srcDir: "src/",
+  routeRules: {},
+  srcDir: 'src/',
   typescript: {
     shim: false,
+    typeCheck: true,
   },
 });

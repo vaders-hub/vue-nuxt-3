@@ -1,6 +1,6 @@
-import { UseFetchOptions } from "nuxt/app";
+import { UseFetchOptions } from 'nuxt/app';
 // import { NitroFetchRequest } from "nitropack";
-import { KeyOfRes } from "nuxt/dist/app/composables/asyncData";
+import { KeyOfRes } from 'nuxt/dist/app/composables/asyncData';
 
 // export function useMyFetch<T>(
 //   request: NitroFetchRequest,
@@ -27,31 +27,25 @@ export const useMyFetch = <T>(
   options?:
     | UseFetchOptions<
         T extends void ? unknown : T,
-        (
-          response: T extends void ? unknown : T
-        ) => T extends void ? unknown : T,
-        KeyOfRes<
-          (
-            response: T extends void ? unknown : T
-          ) => T extends void ? unknown : T
-        >
+        (response: T extends void ? unknown : T) => T extends void ? unknown : T,
+        KeyOfRes<(response: T extends void ? unknown : T) => T extends void ? unknown : T>
       >
-    | undefined
+    | undefined,
 ) => {
   return useFetch<T>(url, {
     ...options,
     async onResponse({ request, response, options }) {
-      console.log("[fetch response]");
+      console.log('[fetch response]');
     },
     async onResponseError({ request, response, options }) {
-      console.log("[fetch response error]");
+      console.log('[fetch response error]');
     },
 
     async onRequest({ request, options }) {
-      console.log("[fetch request]");
+      console.log('[fetch request]');
     },
     async onRequestError({ request, options, error }) {
-      console.log("[fetch request error]");
+      console.log('[fetch request error]');
     },
   });
 };
