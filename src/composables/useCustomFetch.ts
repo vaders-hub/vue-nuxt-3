@@ -1,4 +1,5 @@
 import { createFetch } from '@vueuse/core';
+import { ofetch } from 'ofetch';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 import { useFiltersStore } from '@/store';
 
@@ -40,14 +41,16 @@ export const useCustomFetch = async (request, options?) => {
 export const useCompanyFetch = async (request, options?) => {
   const config = useRuntimeConfig();
 
-  return await $fetch(request, {
+  return await ofetch(request, {
     baseURL: 'https://api.roastandbrew.coffee',
+    headers: {
+      Accept: 'application/json',
+      'Cache-Control': 'no-cache',
+    },
     ...options,
-    async onRequest({ request, options, response, error }) {
-      // console.log('onRequest >>', request);
+    async onRequest({ request, options }: any) {
+      options.headers.authorization = 'test';
     },
-    async onResponse(ctx) {
-      // console.log('onResponse >>', ctx);
-    },
+    async onResponse(ctx) {},
   });
 };
