@@ -30,7 +30,7 @@
       "node": {
         "extensions": [".ts", ".vue"]
       }
-    },
+    }
   },
   "rules": {
     "indent": 0,

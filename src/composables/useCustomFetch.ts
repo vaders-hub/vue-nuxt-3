@@ -14,8 +14,19 @@ const customFetchConfig = createFetch({
   },
 });
 
+const companyFetchConfig = createFetch({
+  baseUrl: 'https://api.roastandbrew.coffee',
+  options: {
+    async beforeFetch({ options }) {
+      return { options };
+    },
+  },
+  fetchOptions: {
+    mode: 'cors',
+  },
+});
+
 export const useCustomFetch = async (request, options?) => {
-  const config = useRuntimeConfig();
   const filtersStore = useFiltersStore();
   const filtersD = filtersStore.filtersList;
 
@@ -23,5 +34,20 @@ export const useCustomFetch = async (request, options?) => {
     ...options,
     async beforeFetch({ url, options, cancel }) {},
     async afterFetch(ctx) {},
+  });
+};
+
+export const useCompanyFetch = async (request, options?) => {
+  const config = useRuntimeConfig();
+
+  return await $fetch(request, {
+    baseURL: 'https://api.roastandbrew.coffee',
+    ...options,
+    async onRequest({ request, options, response, error }) {
+      // console.log('onRequest >>', request);
+    },
+    async onResponse(ctx) {
+      // console.log('onResponse >>', ctx);
+    },
   });
 };

@@ -19,6 +19,6 @@ export default defineNuxtConfig({
   srcDir: 'src/',
   typescript: {
     shim: false,
-    typeCheck: true,
+    // typeCheck: true,
   },
 });
