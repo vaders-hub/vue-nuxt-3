@@ -3,7 +3,7 @@ import { get } from '@vueuse/core';
 import { useFiltersStore } from '@/store';
 
 export default defineComponent({
-  setup() {
+  async setup() {
     const user = ref<any>({});
     const filtersStore = useFiltersStore();
     const filtersD = filtersStore.filtersList;
@@ -17,28 +17,10 @@ export default defineComponent({
     });
 
     const page = ref(1);
-    const lastPage = ref(1);
+    const lastPage = ref('');
     const companies = ref<any>({});
     const pending = ref(false);
     const changedLastPage = computed(() => lastPage.value);
-    const loadCompanies = async () => {
-      pending.value = true;
-      const data = await useCompanyFetch(`/api/v1/companies`, {
-        method: 'GET',
-        params: {
-          page: page.value,
-        },
-      });
-      if (data) {
-        lastPage.value = data.last_page;
-
-        console.log('fetching from server.... ', lastPage.value, changedLastPage.value);
-      }
-    };
-
-    // if (process.client) {
-    //   loadCompanies();
-    // }
 
     watch(
       () => lastPage.value,
@@ -48,13 +30,22 @@ export default defineComponent({
       { deep: true },
     );
 
-    useAsyncData(async () => {
-      loadCompanies();
+    const { data: cafes, error } = await useAsyncData(
+      'cafes',
+      () =>
+        useCompanyFetch(`/api/v1/cafes`, {
+          method: 'GET',
+          params: {
+            page: page.value,
+            search: '',
+          },
+        }),
+      {
+        watch: [page],
+      },
+    );
 
-      user.value = { a: 'aa' };
-    });
-
-    return { filtersD, lastPage, changedLastPage, user };
+    return { filtersD, lastPage, changedLastPage, user, cafes };
   },
 });
 </script>
@@ -66,4 +57,8 @@ export default defineComponent({
   <div>{{ filtersD }}</div>
   <div>{{ lastPage }}</div>
   <div>{{ user.a }}</div>
+
+  <ul>
+    <li v-for="cafe in cafes.data" :key="cafe.id" v-text="cafe.company.name + ' - ' + cafe.location_name"></li>
+  </ul>
 </template>

@@ -2,6 +2,15 @@
 export default defineNuxtConfig({
   ssr: true,
   build: {},
+  nitro: {
+    devProxy: {
+      '/api': {
+        target: 'https://api.roastandbrew.coffee',
+        changeOrigin: true,
+        prependPath: true,
+      },
+    },
+  },
   modules: [
     [
       '@pinia/nuxt',
