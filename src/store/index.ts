@@ -14,7 +14,6 @@ export const useFiltersStore = defineStore({
         const data = await useCustomFetch('https://jsonplaceholder.typicode.com/todos/1');
 
         if (data) this.authData = data;
-        console.log('store data', data);
       } catch (e) {
         console.warn(e);
       }

@@ -4,18 +4,25 @@
     "build": "nuxt build --dotenv ./envs/.env.prod",
     "start": "nuxt start",
     "dev": "nuxt dev --dotenv ./envs/.env.dev",
-    "dev-https": "nuxt dev --https --ssl-cert ./certs/cert-test-mine.pem --ssl-key ./certs/key-test-mine.pem --dotenv ./envs/.env.dev",
+    "dev:https": "nuxt dev --https --ssl-cert ./certs/cert-test-mine.pem --ssl-key ./certs/key-test-mine.pem --dotenv ./envs/.env.dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "format": "prettier --write \"src/**/*.{js,ts,vue}\"",
-    "lint": "eslint \"src/**/*.{js,ts,vue}\" --quiet"
+    "lint": "eslint \"src/**/*.{js,ts,vue}\" --quiet",
+    "test:unit": "vitest --config ./vitest.config.js"
   },
   "devDependencies": {
     "@nuxt/content": "^2.4.3",
+    "@nuxt/test-utils": "^3.2.0",
     "@types/node": "^18.11.19",
+    "@vue/test-utils": "^2.2.10",
+    "eslint-plugin-vitest": "^0.0.32",
+    "jsdom": "^21.1.0",
     "nuxt": "^3.1.2",
-    "prettier": "2.8.4"
+    "prettier": "2.8.4",
+    "unplugin-auto-import": "^0.14.2",
+    "vitest": "^0.28.4"
   },
   "dependencies": {
     "@nuxt/types": "^2.16.0",

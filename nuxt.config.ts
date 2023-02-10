@@ -9,13 +9,22 @@ export default defineNuxtConfig({
       meta: [{ name: 'description', content: 'My amazing site.' }],
     },
   },
-  build: {},
+  // alias: {
+  //   '@/*': fileURLToPath(new URL('./*', import.meta.url)),
+  // },
+  build: {
+    transpile: [/@vueuse\/nuxt/],
+  },
+  imports: {
+    dirs: ['stores'],
+  },
   nitro: {
     devProxy: {
       '/api': {
         target: 'https://localhost:6443',
         changeOrigin: true,
         prependPath: true,
+        secure: false,
       },
     },
   },
@@ -34,7 +43,7 @@ export default defineNuxtConfig({
     [
       '@pinia/nuxt',
       {
-        autoImports: ['defineStore', ['defineStore', 'definePiniaStore']],
+        autoImports: ['defineStore', ['defineStore', 'definePiniaStore'], 'acceptHMRUpdate'],
       },
     ],
   ],
