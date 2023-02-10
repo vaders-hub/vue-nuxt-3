@@ -1,6 +1,14 @@
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
   ssr: true,
+  app: {
+    head: {
+      charset: 'utf-16',
+      viewport: 'width=100, initial-scale=1',
+      title: 'vue-nuxt-3',
+      meta: [{ name: 'description', content: 'My amazing site.' }],
+    },
+  },
   build: {},
   nitro: {
     devProxy: {
@@ -39,6 +47,6 @@ export default defineNuxtConfig({
   srcDir: 'src/',
   typescript: {
     shim: false,
-    typeCheck: true,
+    // typeCheck: true,
   },
 });
