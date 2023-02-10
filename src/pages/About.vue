@@ -10,10 +10,18 @@ export default defineComponent({
 
     onMounted(async () => {
       const param = ref('todos/1');
-      const { isFetching, error, data } = await useCustomFetch(param.value, {
-        method: 'get',
-      });
-      console.log('mounted : ', data.value);
+      // const { isFetching, error, data } = await useCustomFetch(param.value, {
+      //   method: 'get',
+      // });
+
+      // const cdata = await useCoffeeFetch(`/api/v1/companies`, {
+      //   method: 'GET',
+      //   params: {
+      //     page: page.value,
+      //   },
+      // });
+
+      // console.log('cdata :', cdata);
     });
 
     const page = ref(1);
@@ -33,7 +41,7 @@ export default defineComponent({
     const { data: cafes, error } = await useAsyncData(
       'cafes',
       () =>
-        useCompanyFetch(`/api/v1/cafes`, {
+        useCoffeeFetch(`https://api.roastandbrew.coffee/api/v1/cafes`, {
           method: 'GET',
           params: {
             page: page.value,
@@ -44,7 +52,6 @@ export default defineComponent({
         watch: [page],
       },
     );
-
     return { filtersD, lastPage, changedLastPage, user, cafes };
   },
 });

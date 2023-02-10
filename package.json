@@ -3,7 +3,8 @@
   "scripts": {
     "build": "nuxt build",
     "start": "nuxt start",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --dotenv ./envs/.env.dev",
+    "dev-https": "nuxt dev --https --ssl-cert ./certs/cert-test-mine.pem --ssl-key ./certs/key-test-mine.pem --dotenv ./envs/.env.dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",

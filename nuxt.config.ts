@@ -5,9 +5,20 @@ export default defineNuxtConfig({
   nitro: {
     devProxy: {
       '/api': {
-        target: 'https://api.roastandbrew.coffee',
+        target: 'https://localhost:6443',
         changeOrigin: true,
         prependPath: true,
+      },
+    },
+  },
+  vite: {
+    server: {
+      hmr: {
+        clientPort: 24678,
+        port: 24678,
+      },
+      watch: {
+        usePolling: true,
       },
     },
   },
@@ -21,7 +32,7 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     public: {
-      // baseURL: process.env.BASE_URL || "https://localhost:3001/",
+      API_URL_COFFEE: process.env.API_URL_COFFEE,
     },
   },
   routeRules: {},

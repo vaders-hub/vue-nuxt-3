@@ -15,34 +15,11 @@ const customFetchConfig = createFetch({
   },
 });
 
-const companyFetchConfig = createFetch({
-  baseUrl: 'https://api.roastandbrew.coffee',
-  options: {
-    async beforeFetch({ options }) {
-      return { options };
-    },
-  },
-  fetchOptions: {
-    mode: 'cors',
-  },
-});
-
 export const useCustomFetch = async (request, options?) => {
   const filtersStore = useFiltersStore();
   const filtersD = filtersStore.filtersList;
 
-  return await customFetchConfig(request, {
-    ...options,
-    async beforeFetch({ url, options, cancel }) {},
-    async afterFetch(ctx) {},
-  });
-};
-
-export const useCompanyFetch = async (request, options?) => {
-  const config = useRuntimeConfig();
-
   return await ofetch(request, {
-    baseURL: 'https://api.roastandbrew.coffee',
     headers: {
       Accept: 'application/json',
       'Cache-Control': 'no-cache',
@@ -51,6 +28,30 @@ export const useCompanyFetch = async (request, options?) => {
     async onRequest({ request, options }: any) {
       options.headers.authorization = 'test';
     },
-    async onResponse(ctx) {},
+    async onResponse(ctx) {
+      // console.log('useCustomFetch :: ', ctx);
+    },
+  });
+};
+
+export const useCoffeeFetch = async (request, options?) => {
+  const config = useRuntimeConfig();
+  const {
+    public: { API_URL_COFFEE },
+  } = config;
+
+  return await ofetch(request, {
+    baseURL: API_URL_COFFEE,
+    headers: {
+      Accept: 'application/json',
+      'Cache-Control': 'no-cache',
+    },
+    ...options,
+    async onRequest({ request, options }: any) {
+      options.headers.authorization = 'test';
+    },
+    async onResponse(ctx) {
+      // console.log('useCoffeeFetch :: ', ctx);
+    },
   });
 };
