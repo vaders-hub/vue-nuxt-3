@@ -11,17 +11,27 @@
     "postinstall": "nuxt prepare",
     "format": "prettier --write \"src/**/*.{js,ts,vue}\"",
     "lint": "eslint \"src/**/*.{js,ts,vue}\" --quiet",
-    "test:unit": "vitest --config ./vitest.config.js"
+    "test:vitest": "vitest --config ./vitest.config.js",
+    "test:jest": "jest --watch"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
     "@nuxt/content": "^2.4.3",
     "@nuxt/test-utils": "^3.2.0",
     "@types/node": "^18.11.19",
+    "@vue/cli-plugin-unit-jest": "^5.0.8",
     "@vue/test-utils": "^2.2.10",
+    "@vue/vue3-jest": "27",
+    "babel": "^6.23.0",
+    "babel-jest": "27",
     "eslint-plugin-vitest": "^0.0.32",
+    "jest": "27",
+    "jest-transform-stub": "^2.0.0",
     "jsdom": "^21.1.0",
     "nuxt": "^3.1.2",
     "prettier": "2.8.4",
+    "ts-jest": "27",
+    "typescript": "^4.9.5",
     "unplugin-auto-import": "^0.14.2",
     "vitest": "^0.28.4"
   },
@@ -32,7 +42,6 @@
     "@vueuse/core": "^9.12.0",
     "eslint": "^8.33.0",
     "ofetch": "^1.0.0",
-    "typescript": "^4.9.5",
     "vue": "3.2.47",
     "vue-tsc": "^1.0.24",
     "webpack": "5.0.0"
