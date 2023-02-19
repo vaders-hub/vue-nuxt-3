@@ -1,3 +1,5 @@
+import { defineNuxtConfig } from 'nuxt/config';
+
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
   ssr: true,
@@ -9,9 +11,6 @@ export default defineNuxtConfig({
       meta: [{ name: 'description', content: 'My amazing site.' }],
     },
   },
-  // alias: {
-  //   '@/*': fileURLToPath(new URL('./*', import.meta.url)),
-  // },
   build: {
     transpile: [/@vueuse\/nuxt/],
   },
@@ -40,6 +39,7 @@ export default defineNuxtConfig({
     },
   },
   modules: [
+    '@vite-pwa/nuxt',
     [
       '@pinia/nuxt',
       {
@@ -47,6 +47,12 @@ export default defineNuxtConfig({
       },
     ],
   ],
+  plugins: ['./src/plugins/sw.client.js'],
+  pwa: {
+    workbox: {
+      navigateFallback: '/',
+    },
+  },
   runtimeConfig: {
     public: {
       API_URL_COFFEE: process.env.API_URL_COFFEE,
