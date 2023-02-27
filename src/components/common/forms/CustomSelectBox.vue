@@ -11,14 +11,14 @@ export default defineComponent({
   },
   emit: ['update:inputText'],
   async setup(props, ctx) {
-    const select = { state: 'Florida', abbr: 'FL' };
-    const items = [
+    const select = ref('Nebraska');
+    const items = reactive([
       { state: 'Florida', abbr: 'FL' },
       { state: 'Georgia', abbr: 'GA' },
       { state: 'Nebraska', abbr: 'NE' },
       { state: 'California', abbr: 'CA' },
       { state: 'New York', abbr: 'NY' },
-    ];
+    ]);
     return { select, items };
   },
 });
