@@ -21,7 +21,7 @@ export default defineComponent({
   <div>
     <h1>Selectbox</h1>
     <custom-select-box v-model:inputText="searchText" dense :outlined="false" />
-    <!-- 
-    <div>{{ searchText }}</div> -->
+
+    <div>{{ searchText }}</div>
   </div>
 </template>

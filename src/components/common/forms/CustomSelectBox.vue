@@ -10,8 +10,7 @@ export default defineComponent({
     },
   },
   emit: ['update:inputText'],
-  async setup(props, ctx) {
-    const select = ref('Nebraska');
+  setup(props, ctx) {
     const items = reactive([
       { state: 'Florida', abbr: 'FL' },
       { state: 'Georgia', abbr: 'GA' },
@@ -19,7 +18,11 @@ export default defineComponent({
       { state: 'California', abbr: 'CA' },
       { state: 'New York', abbr: 'NY' },
     ]);
-    return { select, items };
+    const onChangeSel = e => {
+      ctx.emit('update:inputText', e);
+    };
+
+    return { items, onChangeSel };
   },
 });
 </script>
@@ -27,15 +30,11 @@ export default defineComponent({
 <template>
   <div>
     <v-select
-      v-model="select"
+      :value="inputText"
       :items="items"
       item-title="state"
       item-value="state"
-      label="Select"
-      persistent-hint
-      return-object
-      single-line
+      @update:modelValue="onChangeSel($event)"
     />
-    <!-- <div>{{ select.state }}</div> -->
   </div>
 </template>
