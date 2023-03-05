@@ -10,7 +10,7 @@ export default defineComponent({
       layout: 'guide',
     });
 
-    const people = ref([
+    const people = ref<any>([
       {
         name: 'William',
         age: 30,
@@ -30,8 +30,18 @@ export default defineComponent({
 
     const selectedPeople = ref([{ name: 'Jennifer', age: 20, sex: 'Female' }]);
     const isSelected = ref(false);
+    const checkAll = computed({
+      get() {
+        if (selectedPeople.value.length === people.value.length) return true;
+        return false;
+      },
+      set(value) {
+        if (value) selectedPeople.value = people.value;
+        if (!value) selectedPeople.value = [];
+      },
+    });
 
-    return { people, selectedPeople, isSelected };
+    return { people, selectedPeople, isSelected, checkAll };
   },
 });
 </script>
@@ -45,7 +55,7 @@ export default defineComponent({
     </template>
 
     <br />
-    <CustomCheckbox :label="`I am checked: ${isSelected}`" v-model="isSelected" />
+    <CustomCheckbox :label="`check all: ${isSelected}`" v-model="checkAll" />
 
     <div>{{ selectedPeople }}</div>
   </div>
