@@ -9,8 +9,26 @@ export default defineComponent({
     definePageMeta({
       layout: 'guide',
     });
+    const radioList = ref<any>([
+      {
+        name: 'William',
+        age: 30,
+        sex: 'Male',
+      },
+      {
+        name: 'Thomas',
+        age: 24,
+        sex: 'Male',
+      },
+      {
+        name: 'Jennifer',
+        age: 20,
+        sex: 'Female',
+      },
+    ]);
+    const selectedRadio = ref('Jennifer');
 
-    return {};
+    return { selectedRadio, radioList };
   },
 });
 </script>
@@ -18,6 +36,7 @@ export default defineComponent({
 <template>
   <div>
     <h1>Radio button</h1>
-    <CustomRadio />
+    <div>{{ selectedRadio }}</div>
+    <CustomRadio :items="radioList" v-model="selectedRadio" />
   </div>
 </template>

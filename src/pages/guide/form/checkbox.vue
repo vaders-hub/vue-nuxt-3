@@ -29,7 +29,7 @@ export default defineComponent({
     ]);
 
     const selectedPeople = ref([{ name: 'Jennifer', age: 20, sex: 'Female' }]);
-    const isSelected = ref(false);
+
     const checkAll = computed({
       get() {
         if (selectedPeople.value.length === people.value.length) return true;
@@ -41,7 +41,7 @@ export default defineComponent({
       },
     });
 
-    return { people, selectedPeople, isSelected, checkAll };
+    return { people, selectedPeople, checkAll };
   },
 });
 </script>
@@ -55,7 +55,7 @@ export default defineComponent({
     </template>
 
     <br />
-    <CustomCheckbox :label="`check all: ${isSelected}`" v-model="checkAll" />
+    <CustomCheckbox :label="`check all: ${checkAll}`" v-model="checkAll" />
 
     <div>{{ selectedPeople }}</div>
   </div>

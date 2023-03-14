@@ -11,7 +11,7 @@ export default defineNuxtConfig({
       charset: 'utf-16',
       viewport: 'width=100, initial-scale=1',
       title: 'vue-nuxt-3',
-      meta: [{ name: 'description', content: 'My amazing site.' }],
+      meta: [{ name: 'description', content: 'default' }],
     },
   },
   build: {
