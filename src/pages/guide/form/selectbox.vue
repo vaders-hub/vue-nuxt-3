@@ -5,7 +5,7 @@ export default defineComponent({
   components: {
     CustomSelectBox,
   },
-  async setup() {
+  async setup(props, ctx) {
     definePageMeta({
       layout: 'guide',
     });
@@ -20,7 +20,7 @@ export default defineComponent({
 <template>
   <div>
     <h1>Selectbox</h1>
-    <custom-select-box v-model:inputText="searchText" dense :outlined="false" />
+    <custom-select-box v-model:modelValue="searchText" dense :outlined="false" />
 
     <div>{{ searchText }}</div>
   </div>

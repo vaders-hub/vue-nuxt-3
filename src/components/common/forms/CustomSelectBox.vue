@@ -4,12 +4,12 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'CustomSelectBox',
   props: {
-    inputText: {
+    modelValue: {
       type: String,
       default: null,
     },
   },
-  emit: ['update:inputText'],
+  emit: ['update:modelValue'],
   setup(props, ctx) {
     const items = reactive([
       { state: 'Florida', abbr: 'FL' },
@@ -19,7 +19,7 @@ export default defineComponent({
       { state: 'New York', abbr: 'NY' },
     ]);
     const onChangeSel = e => {
-      ctx.emit('update:inputText', e);
+      ctx.emit('update:modelValue', e);
     };
 
     return { items, onChangeSel };
@@ -30,7 +30,7 @@ export default defineComponent({
 <template>
   <div>
     <v-select
-      :value="inputText"
+      :value="modelValue"
       :items="items"
       item-title="state"
       item-value="state"

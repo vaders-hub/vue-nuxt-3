@@ -22,9 +22,9 @@ export default defineComponent({
 <template>
   <div>
     <h1>Inputs</h1>
-    <custom-text-field v-model:inputText="searchText" dense :outlined="false" />
-    <custom-text-field v-model:inputText="searchText2" dense :outlined="false" />
-    <custom-text-field v-model:inputText="searchText3">
+    <custom-text-field v-model:modelValue="searchText" dense :outlined="false" />
+    <custom-text-field v-model:modelValue="searchText2" dense :outlined="false" />
+    <custom-text-field v-model:modelValue="searchText3">
       <ClientOnly>
         <template #label>Custom Label</template>
         <template #message>Custom Message</template>

@@ -4,7 +4,7 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'CustomTextField',
   props: {
-    inputText: {
+    modelValue: {
       type: String,
       default: null,
     },
@@ -13,7 +13,7 @@ export default defineComponent({
       default: null,
     },
   },
-  emit: ['update:inputText'],
+  emit: ['update:modelValue'],
   async setup(props, ctx) {
     const parentSlots = computed(() => Object.keys(ctx.slots));
     const textFieldDefaults = computed(() => ({
@@ -32,7 +32,7 @@ export default defineComponent({
 
 <template>
   <div>
-    <v-text-field :value="inputText" @input="$emit('update:inputText', $event.target.value)">
+    <v-text-field :value="modelValue" @input="$emit('update:modelValue', $event.target.value)">
       <ClientOnly
         ><template v-for="slot in parentSlots" #[slot]>
           <slot :name="slot" />

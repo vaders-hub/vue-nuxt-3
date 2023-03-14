@@ -5,13 +5,10 @@ export default defineComponent({
   name: 'CustomRadio',
   props: {
     modelValue: { type: String },
-    value: { type: Object },
-    label: { type: String },
     items: { type: Object },
   },
   emit: ['update:modelValue'],
   setup(props, ctx) {
-    const column = ref(null);
     const model = computed({
       get() {
         return props.modelValue;
@@ -20,7 +17,7 @@ export default defineComponent({
         ctx.emit('update:modelValue', value);
       },
     });
-    return { column, model };
+    return { model };
   },
 });
 </script>
