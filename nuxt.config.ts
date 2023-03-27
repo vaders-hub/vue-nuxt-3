@@ -30,6 +30,14 @@ export default defineNuxtConfig({
         secure: false,
       },
     },
+    devServer: {
+      watch: [],
+    },
+    output: {
+      dir: '.output',
+      serverDir: '.output/server',
+      publicDir: '.output/public',
+    },
   },
   vite: {
     server: {
@@ -75,6 +83,7 @@ export default defineNuxtConfig({
   },
   routeRules: {},
   srcDir: 'src/',
+  // buildDir: '.output',
   typescript: {
     shim: false,
     // typeCheck: true,

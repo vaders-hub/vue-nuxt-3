@@ -7,7 +7,9 @@ export default defineComponent({
     const user = ref<any>({});
     const filtersStore = useFiltersStore();
     const filtersD = filtersStore.filtersList;
-
+    const callbackable = () => {
+      console.log('callbackable');
+    };
     onMounted(async () => {
       const param = ref('todos/1');
       // const { isFetching, error, data } = await useCustomFetch(param.value, {
@@ -22,6 +24,8 @@ export default defineComponent({
       // });
 
       // console.log('cdata :', cdata);
+
+      filtersStore.callbackTest(callbackable);
     });
 
     const page = ref(1);

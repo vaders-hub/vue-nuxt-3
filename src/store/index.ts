@@ -18,6 +18,11 @@ export const useFiltersStore = defineStore({
         console.warn(e);
       }
     },
+    callbackTest(cbk: any) {
+      setTimeout(() => {
+        cbk();
+      }, 3000);
+    },
   },
   getters: {},
 });
